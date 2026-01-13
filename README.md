@@ -9,7 +9,7 @@ It contains **curated, stable, production-ready KQL queries** designed to help s
 This is **not** an experimental query playground.
 Every query here has survived real environments.
 
----
+<br/>
 
 ## 🎯 Purpose of This Repository
 
@@ -26,7 +26,7 @@ This repo exists to:
 
 If a query lives here, it earned its place.
 
----
+<br/>
 
 ## 🧭 How This Repo Is Organized
 
@@ -54,7 +54,7 @@ Each chapter folder contains:
 The structure is intentional:
 you should be able to open a chapter folder and immediately understand *why* the queries exist.
 
----
+<br/>
 
 ## 📘 Relationship to the Book
 
@@ -74,7 +74,7 @@ This repository provides:
 The book stands on its own.
 This repo makes it *operationally useful*.
 
----
+<br/>
 
 ## 🔁 Versioning & Stability
 
@@ -85,7 +85,7 @@ This repo makes it *operationally useful*.
 
 If a query changes here, it changes *for a reason*.
 
----
+<br/>
 
 ## 🧪 What This Repo Is *Not*
 
@@ -98,7 +98,7 @@ To avoid confusion, this repository is deliberately **not**:
 
 For experimental, in-progress, or exploratory KQL, see my main KQL library instead.
 
----
+<br/>
 
 ## 🛠 Prerequisites & Assumptions
 
@@ -110,7 +110,7 @@ Most queries assume:
 
 These queries favor **signal clarity over convenience**.
 
----
+<br/>
 
 ## 🧠 Intended Audience
 
@@ -125,7 +125,7 @@ This repo is written for:
 If you’re looking for “top 10 KQL tricks,” this is probably not it.
 If you’re accountable for outcomes, you’re in the right place.
 
----
+<br/>
 
 ## 📎 License
 
@@ -134,7 +134,7 @@ See `LICENSE` for usage terms.
 You are free to use these queries in your environments.
 Attribution is appreciated, but discipline is required.
 
----
+<br/>
 
 ## 🔗 More from DevSecOpsDad
 
@@ -142,7 +142,7 @@ Attribution is appreciated, but discipline is required.
 * Broader KQL research & tooling: see linked repositories
 * Books, tools, and long-form thinking: this repo is part of that ecosystem
 
----
+<br/>
 
 ## Final Note
 
