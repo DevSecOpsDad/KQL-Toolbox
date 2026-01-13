@@ -1,0 +1,9 @@
+// Original Query
+let PricePerGB = 5.16;   // <-- Replace with your region's actual Sentinel price per GB
+Usage
+| where TimeGenerated > ago(30d)
+| where IsBillable == true
+| summarize TotalGiB = round(sum(Quantity) / 1024.0, 2) by DataType
+| extend CostUSD = round(TotalGiB * PricePerGB, 2)
+| top 10 by CostUSD desc
+| order by CostUSD desc

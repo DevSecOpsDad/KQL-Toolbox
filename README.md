@@ -33,13 +33,12 @@ If a query lives here, it earned its place.
 The repository mirrors the structure of the *KQL Toolbox* book.
 
 ```
-chapters/
-├── 01-cost-signal-discipline/
-├── 02-noise-source-identification/
-├── 03-eventid-behavior-analysis/
-├── 04-delta-and-trend-detection/
-├── 05-threat-hunting-context/
-└── 06-metrics-to-outcomes/
+Repo/
+├── #1: Visualize & Price your Billable Ingest Trends/
+├── #2: Find Your Noisiest Log Sources (With Cost)/
+├── #3: Which Event ID Noises Up Your Logs (and Who’s Causing It)?/
+├── #4: What Changed? Finding Log Sources with the Biggest Delta in Volume & Cost/
+...
 ```
 
 Each chapter folder contains:
