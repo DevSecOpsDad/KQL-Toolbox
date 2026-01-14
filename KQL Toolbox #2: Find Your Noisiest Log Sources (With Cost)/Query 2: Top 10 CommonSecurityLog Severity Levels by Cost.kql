@@ -1,0 +1,13 @@
+// KQL Toolbox #2 - Query 2
+// Top 10 CommonSecurityLog severity levels by cost
+
+let PricePerGB = 5.16;   // <-- Match this to the same rate you used in Query 1
+
+CommonSecurityLog
+| where TimeGenerated > ago(30d)
+| where _IsBillable == true
+| summarize TotalGiB = round(sum(_BilledSize) / 1024.0 / 1024.0 / 1024.0, 2)
+          by DeviceVendor, DeviceProduct, LogSeverity
+| extend CostUSD = round(TotalGiB * PricePerGB, 2)
+| top 10 by CostUSD desc
+| order by CostUSD desc

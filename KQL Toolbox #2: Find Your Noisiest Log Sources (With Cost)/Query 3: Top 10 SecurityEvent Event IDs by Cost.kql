@@ -1,0 +1,13 @@
+// KQL Toolbox #2 - Query 3
+// Top 10 SecurityEvent Event IDs by cost
+
+let PricePerGB = 5.16;   // <-- Same price knob as before
+
+SecurityEvent
+| where TimeGenerated > ago(30d)
+| where _IsBillable == true
+| summarize TotalGiB = round(sum(_BilledSize) / 1024.0 / 1024.0 / 1024.0, 2)
+          by EventID, Activity
+| extend CostUSD = round(TotalGiB * PricePerGB, 2)
+| top 10 by CostUSD desc
+| order by CostUSD desc

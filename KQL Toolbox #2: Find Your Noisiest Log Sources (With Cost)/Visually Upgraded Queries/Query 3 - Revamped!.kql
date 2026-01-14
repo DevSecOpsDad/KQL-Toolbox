@@ -1,0 +1,22 @@
+SecurityEvent
+| where TimeGenerated > ago(30d)
+| where _IsBillable == True
+| summarize EventCount=count(), GiB=round(sum(_BilledSize / 1024 / 1024 / 1024), 2) by EventID
+| extend TotalCost = round(GiB * 5.16, 2)
+| sort by GiB desc
+| extend CostLevel = case(
+                         TotalCost >= 1000,
+                         '$$$$$$',          // Most Expensive
+                         TotalCost >= 750,
+                         '$$$$$',
+                         TotalCost >= 500,
+                         '$$$$',
+                         TotalCost >= 250,
+                         '$$$',
+                         TotalCost >= 100,
+                         '$$',              // Least Expensive
+                         '$'                // Fallback
+                     )
+| extend TotalCost=strcat('$', TotalCost, ' ', CostLevel)
+| project EventID, GiB, TotalCost
+| limit 10
