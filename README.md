@@ -123,7 +123,7 @@ Attribution is appreciated, but discipline is required.
 
 <br/>
 
-## Final Note
+## 📝 Final Note
 
 KQL doesn’t fail teams.
 **Undisciplined questions do.**
