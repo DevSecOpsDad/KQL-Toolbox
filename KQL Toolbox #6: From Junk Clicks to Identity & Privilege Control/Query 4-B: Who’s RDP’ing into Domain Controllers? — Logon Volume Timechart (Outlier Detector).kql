@@ -1,0 +1,12 @@
+SecurityEvent
+| where TimeGenerated > ago(30d)
+| where EventID == 4624  // Focus on successful logons only
+| where AccountType != "Machine"
+| where Account !has "SYSTEM" and Account !endswith "$"
+| where LogonType == 10  // RDP only
+| extend User = coalesce(TargetUserName, Account)
+| summarize LoginCount = count() by 
+    Day = bin(TimeGenerated, 1d),
+    User
+| order by Day desc, LoginCount desc
+| render timechart 

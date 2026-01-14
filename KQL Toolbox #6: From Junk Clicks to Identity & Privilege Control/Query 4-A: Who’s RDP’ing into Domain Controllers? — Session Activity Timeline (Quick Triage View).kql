@@ -1,0 +1,14 @@
+SecurityEvent
+| where TimeGenerated > ago(30d)
+| where EventID in (4624, 4634, 4778, 4779)
+// Early filtering before parsing
+| where AccountType != "Machine"  // More efficient than string matching
+| where Account !has "SYSTEM" and Account !endswith "$"
+// Filter to RDP only for logons, keep all logoff/reconnect/disconnect
+| where EventID != 4624 or LogonType == 10
+| project 
+    TimeGenerated,
+    DomainController = Computer,
+    Activity,
+    User = coalesce(TargetUserName, Account)
+| order by TimeGenerated desc

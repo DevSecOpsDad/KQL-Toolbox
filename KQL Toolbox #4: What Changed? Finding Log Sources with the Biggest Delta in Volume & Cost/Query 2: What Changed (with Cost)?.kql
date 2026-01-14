@@ -1,0 +1,84 @@
+// -------------------------------
+// Configuration / Tunables
+// -------------------------------
+let CostPerGB = 4.30;                      // <-- Sentinel ingest cost per GB (update per region)
+
+let CurrentEnd = now();                    // <-- End of current window (query execution time)
+let CurrentStart = CurrentEnd - 30d;       // <-- Start of current 30-day window
+let PriorStart = CurrentEnd - 60d;         // <-- Start of prior 30-day window
+let PriorEnd = CurrentStart;               // <-- End of prior window (exactly where current begins)
+
+
+// -------------------------------
+// Prior 30-Day Usage (Days -60 → -30)
+// -------------------------------
+let PriorData =
+    Usage                                   // <-- Query the Usage (billing) table
+    | where IsBillable == true              // <-- Only include billable ingestion
+    | where TimeGenerated >= PriorStart     // <-- Prior window start (inclusive)
+          and TimeGenerated < PriorEnd      // <-- Prior window end (exclusive, avoids overlap)
+    | summarize                             // <-- Aggregate total ingest for that window
+        PriorGB = round(
+            todouble(sum(Quantity)) / 1024, // <-- Sum MB and convert to GB (MB → GB)
+            2                               // <-- Round to 2 decimals
+        )
+        by DataType;                        // <-- Group by table / data source name
+
+
+// -------------------------------
+// Current 30-Day Usage (Days -30 → Now)
+// -------------------------------
+let CurrentData =
+    Usage                                   // <-- Query the Usage (billing) table
+    | where IsBillable == true              // <-- Only include billable ingestion
+    | where TimeGenerated >= CurrentStart   // <-- Current window start (inclusive)
+          and TimeGenerated <= CurrentEnd   // <-- Current window end (inclusive)
+    | summarize                             // <-- Aggregate total ingest for that window
+        CurrentGB = round(
+            todouble(sum(Quantity)) / 1024, // <-- Sum MB and convert to GB (MB → GB)
+            2                               // <-- Round to 2 decimals
+        )
+        by DataType;                        // <-- Group by table / data source name
+
+
+// -------------------------------
+// Comparison & Delta Analysis
+// -------------------------------
+PriorData
+| join kind=fullouter                       // <-- Keep all sources (new/discontinued included)
+    CurrentData
+    on DataType                             // <-- Join on data source name
+| extend
+    PriorGB   = coalesce(PriorGB, 0.0),     // <-- Missing prior data becomes 0
+    CurrentGB = coalesce(CurrentGB, 0.0),   // <-- Missing current data becomes 0
+    ChangeGB  = CurrentGB - PriorGB         // <-- Compute raw GB delta (positive or negative)
+| project
+    ['Data Source']           = DataType,   // <-- Friendly output name
+    ['Previous 30 Days (GB)'] = PriorGB,    // <-- Prior window volume
+    ['Current 30 Days (GB)']  = CurrentGB,  // <-- Current window volume
+    ['Change (GB)']           = round(      // <-- Rounded delta for display
+        ChangeGB,
+        2
+    ),
+    ['Change %'] =
+        iif(
+            PriorGB > 0,                    // <-- Only compute % change if baseline exists
+            round(
+                (ChangeGB / PriorGB) * 100, // <-- Percent change formula
+                1
+            ),
+            real(null)                      // <-- If prior was 0, % is undefined (don’t fake it)
+        ),
+    ['Change $'] =
+        strcat(
+            '$',
+            round(
+                ChangeGB * CostPerGB,       // <-- Convert GB delta into estimated cost delta
+                2
+            )
+        )
+| where                                    // <-- Remove rows where both windows are 0
+    ['Current 30 Days (GB)'] > 0
+    or ['Previous 30 Days (GB)'] > 0
+| top 10                                   // <-- Focus on the biggest movers
+    by abs(['Change (GB)']) desc            // <-- Rank by magnitude (spike OR drop)
