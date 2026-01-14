@@ -141,7 +141,7 @@ This repo exists to help you ask better ones.
   </p>
   <a href="https://www.devsecopsdad.com" target="_blank" rel="noopener noreferrer">
     <img 
-      src="https://github.com/EEN421/PowerShell-Toolbox/blob/Main/DevSecOpsDad.png"
+      src="https://github.com/EEN421/KQL-Toolbox/blob/Main/DevSecOpsDad.png"
       alt="DevSecOpsDad.com"
       style="width: 315px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
@@ -168,13 +168,13 @@ This repo exists to help you ask better ones.
 
 <div style="text-align:left; margin: 2.5em 0;">
     <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
-    📘 <strong>KQL Toolbox</strong><br/>
+    📘 <strong>PowerShell Toolbox</strong><br/>
     Turning Logs into Decisions in Microsoft Sentinel & Defender XDR
   </p>
-  <a href="EEN421/PowerShell-Toolbox/DevSecOpsDad.png" target="_blank" rel="noopener noreferrer">
+  <a href="EEN421/KQL-Toolbox/DevSecOpsDad.png" target="_blank" rel="noopener noreferrer">
     <img 
-      src="https://github.com/EEN421/KQL-Toolbox/blob/Main/KQL%20Toolbox%20Cover.png"
-      alt="KQL Toolbox: Turning Logs into Decisions in Microsoft Sentinel & Defender XDR"
+      src="https://github.com/EEN421/PowerShell-Toolbox/blob/Main/PowerShell-Cover.png"
+      alt="PowerShell Toolbox: Hands-on Automation for Auditing and Defense"
       style="width: 315px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
   </a>
