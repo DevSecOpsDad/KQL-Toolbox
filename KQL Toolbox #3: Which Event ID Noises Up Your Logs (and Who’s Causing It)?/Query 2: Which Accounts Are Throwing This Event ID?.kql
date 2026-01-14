@@ -1,0 +1,7 @@
+// Which Accounts are throwing this EventID?
+
+SecurityEvent                     // <--Define the table to query
+| where EventID == 4663         // <--Declare which EventID you're looking for
+| summarize count() by Account    // <--Show how many times that EventID was thrown per account
+| sort by count_ desc             // <-- Sort by heaviest hitters first
+| render columnchart              // <--Optional, but helps quickly visualize potential outliers

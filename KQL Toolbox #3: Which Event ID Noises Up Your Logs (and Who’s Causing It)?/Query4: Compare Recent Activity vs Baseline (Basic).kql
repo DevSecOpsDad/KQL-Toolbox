@@ -1,0 +1,23 @@
+// This query helps answer a common SOC question: which Event IDs have recently spiked
+// well beyond their historical baseline and may warrant investigation.
+
+let BaselineWindow = 90d;
+let RecentWindow = 7d;
+let ThresholdMultiplier = 2.0;
+let Baseline =
+SecurityEvent
+| where TimeGenerated > ago(BaselineWindow)
+| summarize DailyCount=count() by EventID, Day=bin(TimeGenerated, 1d)
+| summarize BaselineAvgDaily=round(avg(DailyCount),2) by EventID;
+let Recent =
+SecurityEvent
+| where TimeGenerated > ago(RecentWindow)
+| summarize RecentDailyCount=count() by EventID, Day=bin(TimeGenerated, 1d)
+| summarize RecentAvgDaily=round(avg(RecentDailyCount),2) by EventID;
+Baseline
+| join kind=inner Recent on EventID
+| extend DeviationRatio=round(RecentAvgDaily / BaselineAvgDaily, 2)
+| where DeviationRatio >= ThresholdMultiplier
+| project EventID, BaselineAvgDaily, RecentAvgDaily, DeviationRatio
+| sort by DeviationRatio desc
+| take 10
