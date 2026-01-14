@@ -34,10 +34,10 @@ The repository mirrors the structure of the *KQL Toolbox* book.
 
 ```
 Repo/
-├── #1: Visualize & Price your Billable Ingest Trends/
-├── #2: Find Your Noisiest Log Sources (With Cost)/
-├── #3: Which Event ID Noises Up Your Logs (and Who’s Causing It)?/
-├── #4: What Changed? Finding Log Sources with the Biggest Delta in Volume & Cost/
+├── KQL Toolbox #1: Visualize & Price your Billable Ingest Trends/
+├── KQL Toolbox #2: Find Your Noisiest Log Sources (With Cost)/
+├── KQL Toolbox #3: Which Event ID Noises Up Your Logs (and Who’s Causing It)?/
+├── KQL Toolbox #4: What Changed? Finding Log Sources with the Biggest Delta in Volume & Cost/
 ...
 ```
 
