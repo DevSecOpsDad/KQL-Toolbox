@@ -41,18 +41,6 @@ Repo/
 ...
 ```
 
-Each chapter folder contains:
-
-* **Final KQL queries** referenced in the book
-* A short `README.md` explaining:
-
-  * What decision the queries support
-  * Required tables and assumptions
-  * Known limitations and blind spots
-
-The structure is intentional:
-you should be able to open a chapter folder and immediately understand *why* the queries exist.
-
 <br/>
 
 ## 📘 Relationship to the Book
@@ -126,7 +114,7 @@ If you’re accountable for outcomes, you’re in the right place.
 
 <br/>
 
-## 📎 License
+## 🔑 License
 
 See `LICENSE` for usage terms.
 
@@ -137,8 +125,22 @@ Attribution is appreciated, but discipline is required.
 
 ## 🔗 More from DevSecOpsDad
 
-* Technical blog & experiments: **DevSecOpsDad.com**
-* Broader KQL research & tooling: see linked repositories
+* Technical blog & experiments: [DevSecOpsDad.com](www.devsecopsdad.com)
+
+<div style="text-align:center; margin: 2.5em 0;">
+  <a href="https://a.co/d/4vveVCI" target="_blank" rel="noopener noreferrer">
+    <img 
+      src="book/assets/img/6/cover11.jpg"
+      alt="Ultimate Microsoft XDR for Full Spectrum Cyber Defense"
+      style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
+    />
+  </a>
+  <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
+    📘 <strong>Ultimate Microsoft XDR for Full Spectrum Cyber Defense</strong><br/>
+    Real-world detections, Sentinel, Defender XDR, and Entra ID — end to end
+  </p>
+</div>
+
 * Books, tools, and long-form thinking: this repo is part of that ecosystem
 
 <br/>
