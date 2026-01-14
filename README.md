@@ -130,7 +130,7 @@ Attribution is appreciated, but discipline is required.
 <div style="text-align:center; margin: 2.5em 0;">
   <a href="https://a.co/d/4vveVCI" target="_blank" rel="noopener noreferrer">
     <img 
-      src="book/assets/img/6/cover11.jpg"
+      src="https://www.hanley.cloud/assets/img/Ultimate%20XDR%20for%20Full%20Spectrum%20Cyber%20Defense/cover11.jpg"
       alt="Ultimate Microsoft XDR for Full Spectrum Cyber Defense"
       style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
