@@ -1,0 +1,31 @@
+// Get total MTTR
+let TotalMTTRTable = 
+    SecurityIncident
+    | where TimeGenerated > ago(90d)
+    | where Status == "Closed"
+    | summarize TotalMTTR = round(avg(datetime_diff('minute', ClosedTime, CreatedTime)), 2)
+    | extend Key = 1;  // Adding a key for joining
+// Calculate MTTR per severity
+let SeverityMTTR = 
+    SecurityIncident
+    | where TimeGenerated > ago(90d)
+    | where Status == "Closed"
+    | summarize MedianTTR = percentile(datetime_diff('minute', ClosedTime, CreatedTime), 50) by Severity
+    | extend Key = 1;  // Adding a key for joining
+// Join both results to calculate percentage
+SeverityMTTR
+| join kind=inner (TotalMTTRTable) on Key
+| extend PercentageOfTotal = strcat(iff(TotalMTTR > 0, round((MedianTTR * 100.0) / TotalMTTR, 2), 0.0), '%')  // Ensure consistent data type
+| extend MTTR_Severity = case(
+                             MedianTTR <= 60,
+                             '✔ Fast', 
+                             MedianTTR <= 180,
+                             '⚠ Medium', 
+                             'X Slow'
+                         )
+| project
+    Severity, 
+    ["Median Time to Resolve (minutes)"] = MedianTTR, 
+    ["% of Total MTTR"] = PercentageOfTotal, 
+    ["MTTR Classification"] = MTTR_Severity
+| order by Severity asc

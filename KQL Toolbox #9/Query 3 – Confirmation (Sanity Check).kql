@@ -1,0 +1,4 @@
+CommonSecurityLog
+| where TimeGenerated > ago(5m)
+| where DeviceVendor == "Fortinet" or DeviceProduct startswith "Fortigate"  
+| where Activity contains "close"

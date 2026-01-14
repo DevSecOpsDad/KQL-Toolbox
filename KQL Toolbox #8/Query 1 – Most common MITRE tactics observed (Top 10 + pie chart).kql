@@ -1,0 +1,8 @@
+SecurityAlert
+| where TimeGenerated > ago(90d)
+| where isnotempty(Tactics)
+| mv-expand tactic = split(Tactics, ", ")
+| summarize Count = count() by tostring(tactic)
+| sort by Count desc
+| top 10 by Count
+| render piechart

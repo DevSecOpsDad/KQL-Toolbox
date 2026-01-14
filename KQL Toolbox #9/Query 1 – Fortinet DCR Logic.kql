@@ -1,0 +1,55 @@
+CommonSecurityLog
+| where DeviceVendor == "Fortinet" or DeviceProduct startswith "Fortigate"
+| extend _msg = tostring(coalesce(Message, Activity))
+// CURRENT FILTERS - Only connection teardown/close events:
+| where _msg !~ @"traffic:forward close"       // Connection close events
+| where _msg !~ @"traffic:forward client-rst"  // Client reset packets  
+| where _msg !~ @"traffic:forward server-rst"  // Server reset packets
+| where _msg !~ @"traffic:forward timeout"     // Connection timeouts
+| where _msg !~ @"traffic:forward cancel"      // Cancelled connections
+| where _msg !~ @"traffic:forward client-fin"  // Client FIN packets
+| where _msg !~ @"traffic:forward server-fin"  // Server FIN packets
+| where _msg !~ @"traffic:local close"         // Local (intra-device) connection close events
+| where _msg !~ @"traffic:local client-rst"    // Local (intra-device) client reset packets
+| where _msg !~ @"traffic:local timeout"       // Local (intra-device) connection timeouts
+| where _msg !~ @"traffic:local server-rst"    // Local (intra-device) server reset packets
+// STILL INCLUDED (high volume, potentially low security value):
+// - "traffic:forward accept" etc.
+// - Normal application traffic, web browsing, etc.
+// - ICMP/ping traffic  
+// - DNS queries
+// - Routine administrative traffic
+| extend RespCode_ = toint(extract(@"ResponseCode=([0-9]+)", 1, AdditionalExtensions)),
+         URL_      = extract(@"RequestURL=([^;]+)", 1, AdditionalExtensions),
+         App_      = extract(@"ApplicationProtocol=([^;]+)", 1, AdditionalExtensions),
+         Threat_   = extract(@"ThreatName=([^;]+)", 1, AdditionalExtensions),
+         IPS_      = extract(@"IPSAction=([^;]+)", 1, AdditionalExtensions),
+         Policy_   = extract(@"PolicyID=([^;]+)", 1, AdditionalExtensions),
+         BytesIn_  = tolong(extract(@"ReceivedBytes=([0-9]+)", 1, AdditionalExtensions)),
+         BytesOut_ = tolong(extract(@"SentBytes=([0-9]+)", 1, AdditionalExtensions))
+| project
+    TimeGenerated,
+    Computer = coalesce(Computer, DeviceName),
+    Message = _msg,
+    EventID = coalesce(DeviceEventClassID, ExtID),
+    SourceIP, DestinationIP, SourcePort, DestinationPort, Protocol,
+    Action = coalesce(DeviceAction, SimplifiedDeviceAction),
+    RuleName = coalesce(DeviceCustomString1, DeviceCustomString2),
+    RuleID   = coalesce(DeviceCustomNumber1, DeviceCustomNumber2),
+    SubjectUserName = coalesce(SourceUserName, DeviceCustomString3),
+    TargetUserName  = coalesce(DestinationUserName, DeviceCustomString4),
+    ProcessName = coalesce(ProcessName, DeviceCustomString6),
+    Method = RequestMethod,
+    URLPath = coalesce(RequestURL, URL_),
+    URLDomain = coalesce(DestinationHostName, extract(@"://([^/]+)", 1, coalesce(RequestURL, URL_))),
+    ResponseCode = coalesce(DeviceCustomNumber3, RespCode_),
+    App = App_, 
+    ThreatName = Threat_, 
+    IPSAction = IPS_, 
+    PolicyID = Policy_,
+    BytesIn = BytesIn_, 
+    BytesOut = BytesOut_,
+    LogSeverity, 
+    DeviceVendor, 
+    DeviceProduct, 
+    _ResourceId

@@ -1,0 +1,8 @@
+SecurityAlert
+| where TimeGenerated > ago(90d)
+| where isnotempty(Techniques)
+| mv-expand technique = split(Techniques, ", ")
+| summarize Count = count() by tostring(technique)
+| sort by Count desc
+| top 10 by Count
+| project ["MITRE Technique"] = technique, Count
