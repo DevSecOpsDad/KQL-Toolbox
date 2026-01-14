@@ -123,11 +123,24 @@ Attribution is appreciated, but discipline is required.
 
 <br/>
 
-## 🔗 More from DevSecOpsDad
+## Final Note
 
-* Technical blog & experiments: [DevSecOpsDad.com](www.devsecopsdad.com)
+KQL doesn’t fail teams.
+**Undisciplined questions do.**
 
-<div style="text-align:center; margin: 2.5em 0;">
+This repo exists to help you ask better ones.
+
+<br/>
+
+## ⚡ More from DevSecOpsDad
+
+Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
+
+<div style="text-align:left; margin: 2.5em 0;">
+    <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
+    📘 <strong>Ultimate Microsoft XDR for Full Spectrum Cyber Defense</strong><br/>
+    Real-world detections, Sentinel, Defender XDR, and Entra ID — end to end
+  </p>
   <a href="https://a.co/d/4vveVCI" target="_blank" rel="noopener noreferrer">
     <img 
       src="https://www.hanley.cloud/assets/img/Ultimate%20XDR%20for%20Full%20Spectrum%20Cyber%20Defense/cover11.jpg"
@@ -135,27 +148,22 @@ Attribution is appreciated, but discipline is required.
       style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
   </a>
-  <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
-    📘 <strong>Ultimate Microsoft XDR for Full Spectrum Cyber Defense</strong><br/>
-    Real-world detections, Sentinel, Defender XDR, and Entra ID — end to end
+
+<div style="text-align:left; margin: 2.5em 0;">
+    <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
+    📘 <strong>KQL Toolbox</strong><br/>
+    Turning Logs into Decisions in Microsoft Sentinel
   </p>
+  <a href="https://a.co/d/4vveVCI" target="_blank" rel="noopener noreferrer">
+    <img 
+      src="book/assets/img/KQL Toolbox Cover1.png"
+      alt="KQL Toolbox: Turning Logs into Decisions in Microsoft Sentinel"
+      style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
+    />
+  </a>
+
 </div>
 
-* Books, tools, and long-form thinking: this repo is part of that ecosystem
+</div>
 
-<br/>
 
-## Final Note
-
-KQL doesn’t fail teams.
-**Undisciplined questions do.**
-
-<br/>
-
-## ⚡ More from DevSecOpsDad
-
-Technical blog & experiments: DevSecOpsDad.com
-
-Long-form work (books, toolboxes, decision surfaces): this repo is part of that ecosystem
-
-This repo exists to help you ask better ones.
