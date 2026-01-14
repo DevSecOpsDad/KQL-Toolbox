@@ -86,7 +86,7 @@ If a query changes here, it changes *for a reason*.
 
 <br/>
 
-## 🧪 What This Repo Is *Not*
+## ⚠️ What This Repo Is *Not*
 
 To avoid confusion, this repository is deliberately **not**:
 
@@ -147,5 +147,13 @@ Attribution is appreciated, but discipline is required.
 
 KQL doesn’t fail teams.
 **Undisciplined questions do.**
+
+<br/>
+
+## ⚡ More from DevSecOpsDad
+
+Technical blog & experiments: DevSecOpsDad.com
+
+Long-form work (books, toolboxes, decision surfaces): this repo is part of that ecosystem
 
 This repo exists to help you ask better ones.
