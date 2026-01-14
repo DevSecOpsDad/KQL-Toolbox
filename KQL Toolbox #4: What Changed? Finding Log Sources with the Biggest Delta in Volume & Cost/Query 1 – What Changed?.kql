@@ -1,20 +1,3 @@
-//This query:
-//-->Finds the exact time ranges for comparison periods (previous 30 days vs current 30 days)
-//-->Calculates total GB for each data source in both periods
-//-->Joins the results to show the comparison
-//-->Calculates both absolute and percentage changes
-//-->Shows top 5 sources with biggest absolute changes
-//-->Handles cases where sources might be new or discontinued
-
-//The results include:
-//-->Data Source name
-//-->Volume for previous 30 days in GB
-//-->Volume for current 30 days in GB
-//-->Absolute change in GB
-//-->Percentage change
-
-// Capture the exact end of the "current" period by finding the latest
-// billable Usage record in the workspace
 let CurrentPeriod = toscalar(
     Usage                              // Query the Usage (billing) table
     | where IsBillable == true         // Only include billable ingestion
