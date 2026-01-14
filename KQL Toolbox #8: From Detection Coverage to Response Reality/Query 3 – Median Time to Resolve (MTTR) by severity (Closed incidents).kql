@@ -1,4 +1,3 @@
-// Get total MTTR
 let TotalMTTRTable = 
     SecurityIncident
     | where TimeGenerated > ago(90d)

@@ -2,13 +2,10 @@
 // Configuration / Tunables
 // -------------------------------
 let CostPerGB = 4.30;                      // <-- Sentinel ingest cost per GB (update per region)
-
 let CurrentEnd = now();                    // <-- End of current window (query execution time)
 let CurrentStart = CurrentEnd - 30d;       // <-- Start of current 30-day window
 let PriorStart = CurrentEnd - 60d;         // <-- Start of prior 30-day window
 let PriorEnd = CurrentStart;               // <-- End of prior window (exactly where current begins)
-
-
 // -------------------------------
 // Prior 30-Day Usage (Days -60 → -30)
 // -------------------------------
@@ -23,8 +20,6 @@ let PriorData =
             2                               // <-- Round to 2 decimals
         )
         by DataType;                        // <-- Group by table / data source name
-
-
 // -------------------------------
 // Current 30-Day Usage (Days -30 → Now)
 // -------------------------------
@@ -39,8 +34,6 @@ let CurrentData =
             2                               // <-- Round to 2 decimals
         )
         by DataType;                        // <-- Group by table / data source name
-
-
 // -------------------------------
 // Comparison & Delta Analysis
 // -------------------------------

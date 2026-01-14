@@ -1,7 +1,3 @@
-// This query helps answer a common SOC question: which Event IDs have recently spiked
-// well beyond their historical baseline and may warrant investigation.
-// Enhanced - includes Computer and Account
-
 let BaselineWindow = 90d;
 let RecentWindow = 30d;
 let ThresholdMultiplier = 2.0;

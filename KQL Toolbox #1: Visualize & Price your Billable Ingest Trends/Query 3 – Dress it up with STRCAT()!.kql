@@ -1,6 +1,3 @@
-//Query 3: The below query will return the total billable GB and incurred cost per day. 
-//Because the cost is made into a string with strcat, it's not great for graphs. 
-
 Usage                                                                                   // <--Query the Usage table
 | where TimeGenerated > ago(90d)                                                        // <--Query the last 90 days
 | where IsBillable == true                                                              // <--Only include 'billable' data

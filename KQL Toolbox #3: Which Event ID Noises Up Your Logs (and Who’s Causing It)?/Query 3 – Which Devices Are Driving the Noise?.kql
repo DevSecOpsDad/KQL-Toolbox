@@ -1,5 +1,3 @@
-// Which Devices are throwing this EventID?
-
 SecurityEvent                     // <--Define the table to query
 | where EventID == 4663           // <--Declare which EventID you're looking for
 | summarize count() by Computer   // <--Show how many times that EventID was thrown per device

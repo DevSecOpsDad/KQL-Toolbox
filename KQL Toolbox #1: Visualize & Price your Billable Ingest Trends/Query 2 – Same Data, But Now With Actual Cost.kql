@@ -1,6 +1,3 @@
-//Query 2: This query is great for graphing out cost per day because CostUSD is float and not a string.
-//You lose the '$' and '/day' formatting in the number column this way.
-
 Usage                                                                                             // <--Query the Usage table
 | where TimeGenerated > ago(90d)                                                                  // <--Query the last 90 days
 | where IsBillable == true                                                                        // <--Only include 'billable' data
