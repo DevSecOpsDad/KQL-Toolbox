@@ -169,7 +169,7 @@ This repo exists to help you ask better ones.
 <div style="text-align:center; margin: 2.5em 0;">
   <a href="https://a.co/d/ifIo6eT" target="_blank" rel="noopener noreferrer">
     <img 
-      src="PowerShell-Cover.png"
+      src="https://github.com/DevSecOpsDad/KQL-Toolbox/blob/Main/PowerShell-Cover.jpg"
       alt="PowerShell Toolbox: Hands-On Automation for Auditing and Defense"
       style="width: 315px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
