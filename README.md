@@ -167,6 +167,9 @@ This repo exists to help you ask better ones.
 <br/><br/>
 
 <div style="text-align:center; margin: 2.5em 0;">
+    <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
+    📘 <strong>PowerShell Toolbox: Hands-On Automation for Auditing and Defense
+  </p>
   <a href="https://a.co/d/ifIo6eT" target="_blank" rel="noopener noreferrer">
     <img 
       src="https://github.com/DevSecOpsDad/KQL-Toolbox/blob/Main/PowerShell-Cover.jpg"
