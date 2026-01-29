@@ -152,8 +152,7 @@ This repo exists to help you ask better ones.
 
 <div style="text-align:left; margin: 2.5em 0;">
     <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
-    📘 <strong>Ultimate Microsoft XDR for Full Spectrum Cyber Defense</strong><br/>
-    Real-world detections, Sentinel, Defender XDR, and Entra ID — end to end
+    📘 <strong>Ultimate Microsoft XDR for Full Spectrum Cyber Defense</strong>
   </p>
   <a href="https://a.co/d/4vveVCI" target="_blank" rel="noopener noreferrer">
     <img 
