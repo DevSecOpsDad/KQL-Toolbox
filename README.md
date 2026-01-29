@@ -157,7 +157,7 @@ This repo exists to help you ask better ones.
   </p>
   <a href="https://a.co/d/4vveVCI" target="_blank" rel="noopener noreferrer">
     <img 
-      src="https://www.hanley.cloud/assets/img/Ultimate%20XDR%20for%20Full%20Spectrum%20Cyber%20Defense/cover11.jpg"
+      src="cover11.jpg"
       alt="Ultimate Microsoft XDR for Full Spectrum Cyber Defense"
       style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
@@ -166,15 +166,11 @@ This repo exists to help you ask better ones.
 
 <br/><br/>
 
-<div style="text-align:left; margin: 2.5em 0;">
-    <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
-    📘 <strong>PowerShell Toolbox</strong><br/>
-    Turning Logs into Decisions in Microsoft Sentinel & Defender XDR
-  </p>
-  <a href="EEN421/KQL-Toolbox/DevSecOpsDad.png" target="_blank" rel="noopener noreferrer">
+<div style="text-align:center; margin: 2.5em 0;">
+  <a href="https://a.co/d/ifIo6eT" target="_blank" rel="noopener noreferrer">
     <img 
-      src="https://github.com/EEN421/PowerShell-Toolbox/blob/Main/PowerShell-Cover.png"
-      alt="PowerShell Toolbox: Hands-on Automation for Auditing and Defense"
+      src="PowerShell-Cover.png"
+      alt="PowerShell Toolbox: Hands-On Automation for Auditing and Defense"
       style="width: 315px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
   </a>
